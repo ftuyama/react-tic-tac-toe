@@ -18,21 +18,14 @@ class Board extends React.Component {
   render() {
     return (
       <div>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
+        { [0, 1, 2].map(function(row) {
+          return(
+          <div key={row} className="board-row">
+            {this.renderSquare(0 + 3 * row)}
+            {this.renderSquare(1 + 3 * row)}
+            {this.renderSquare(2 + 3 * row)}
+          </div>
+        )}, this)}
       </div>
     );
   }
@@ -74,7 +67,8 @@ class Game extends React.Component {
   }
   render() {
     const history = this.state.history;
-    const current = history[this.state.stepNumber];
+    const currentStep = this.state.stepNumber;
+    const current = history[currentStep];
 
     const winner = calculateWinner(current.squares);
     let status;
@@ -88,7 +82,7 @@ class Game extends React.Component {
       const desc = move ?
         'Move #' + move : 'Game start';
       return (
-        <li key={move}>
+        <li key={move} className={currentStep === move ? 'current' : ''}>
           <a href="#" onClick={() => this.jumpTo(move)}>{desc}</a>
         </li>
       );
