@@ -1,54 +1,57 @@
 body {
   font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
-}
+  margin: 20px; }
 
-ol, ul {
-  padding-left: 30px;
-}
+.container {
+  padding: 0 20%; }
 
-.current {
-  font-weight: bold;
-}
+.game {
+  display: flex;
+  flex-direction: row; }
 
-.board-row:after {
+.game .game-board .board-row:after {
   clear: both;
   content: "";
-  display: table;
-}
+  display: table; }
 
-.status {
-  margin-bottom: 10px;
-}
-
-.square {
+.game .game-board .square {
   background: #fff;
   border: 1px solid #999;
   float: left;
   font-size: 24px;
   font-weight: bold;
   line-height: 34px;
-  height: 34px;
+  height: 64px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 34px;
-}
+  width: 64px; }
 
-.square:focus {
-  outline: none;
-}
+.game .game-board .square.victory {
+  background: antiquewhite; }
 
-.kbd-navigation .square:focus {
-  background: #ddd;
-}
+.game .game-board .square:focus {
+  outline: none; }
 
-.game {
-  display: flex;
-  flex-direction: row;
-}
+.game .game-board .square:hover {
+  background: #ccc; }
 
-.game-info {
-  margin-left: 20px;
-}
+.game .game-board .square:active {
+  background: #aaa; }
+
+.game .game-info {
+  margin-left: 40px; }
+
+.game .game-info .status {
+  margin-bottom: 10px; }
+
+.game .game-info .move-list {
+  border-style: double;
+  padding: 10px 30px; }
+
+.game .game-info .move-list ol {
+  padding-left: 20px; }
+
+.game .game-info .move-list ol .current {
+  font-weight: bold; }
